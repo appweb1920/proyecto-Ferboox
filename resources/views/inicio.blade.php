@@ -9,65 +9,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <style>
-
-        html,body{
-            background: #0C2445;
-        }
-        .colorPrimario{
-            background: #0C2445;
-        }
-
-        .colorSecundario{
-            background: #FC9404;
-        }
-        #menu a{
-            color: #f0f0f0;
-        }
-        /* Set the border color */ 
-          
-        .custom-toggler.navbar-toggler { 
-            border-color: white; 
-        } 
-        /* Setting the stroke to green using rgb values (0, 128, 0) */ 
-          
-        .custom-toggler .navbar-toggler-icon { 
-            background-image: url( "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(252, 148, 4, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
-        } 
-
-        .contenedor{
-            padding: 1em;
-            background: white;
-        }
-
-        footer{
-            background: #424242;
-            color: white;
-        }
-
-        .texto{
-            font-family: 'Nanum Gothic', sans-serif;
-            font-size: 1em;
-            padding-top: 3em;
-            color: black;
-        }
-
-        .contenedorCuerpo{
-            margin-left: 1em;
-            margin-right: 1em;
-        }
-
-        h2{
-            color: #FC9404;
-        }
-
-        @media screen and (max-width: 800px) {
-            .contenedorCuerpo{
-            margin: 0;
-        }
-
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/base.css">
 </head>
 <body>
     <!--Menu--->
@@ -79,15 +21,18 @@
         <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" height="50" width="50" alt=""></a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item active pr-2">
+                    <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                <li class="nav-item  pr-2">
+                    <a class="nav-link" href="/catalogo">Catálogo</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                <li class="nav-item  pr-2">
+                    <a class="nav-link" href="#">Cotización</a>
+                </li>
+                <li class="nav-item  pr-2">
+                    <a class="nav-link" href="#">Mi Cuenta</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -98,40 +43,68 @@
     </nav>
 
 
-
+    <div id="banner">
+        <img class="img-fluid" src="imgs/imagenBanner2.jpg"  alt="">
+    </div>
     <div class="contenedorCuerpo">
-        <div id="banner">
-            <img class="img-fluid" src="imgs/imagenBanner2.jpg"  alt="">
-        </div>
-        <div class="contenedor border-bottom border-dark">
+        <div class="contenedor border-bottom border-dark bg-light">
             <h2 class="text-center">COMPROMISO</h2>
             <div class="row">
-                <div class="col-sm-6 texto border border-dark">
+                <div class="col-sm-6 texto">
                     <p>En ConstruMx buscamos el compromismo interno con nuestros clientes Lorem ipsum dolor sit amet, 
                     consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                     teur sint occaecat cupidatat non proident, sunt in c
                     ulpa qui officia deserunt mollit anim id est laborum."
                     </p>
+                    <div class="text-center pt-2" id="medalla">
+                        <img class = "img-fluid" src="icons/medalla2.png" height="70" width= "70" alt="">
+                    </div>
                 </div>
-                <div class="col-sm-6 text-center border border-dark">
+                <div class="col-sm-6 text-center">
                     <img class = "img-fluid" src="https://secureservercdn.net/198.71.233.51/ibx.8df.myftpupload.com/wp-content/uploads/2019/12/home-slider.gif" alt="">
                 </div>
             </div>
             
         </div>
 
-        <div class="contenedor border-bottom border-dark">
-            <h2>¿Cómo hacer tu cotización?</h2>
+        <div class="contenedor border-bottom border-dark text-center bg-light">
+            <h2 class="text-center">Haz tu Cotización</h2>
+            <h5 class="pt-2">¿Por qué esperar a que te generen una Cotización? Tu la puedes hacer en tres sencillos pasos:</h5>
+            <div class="row text-center" id="pasos">
+                <div class="col-sm-3 containerSteps">
+                    <img class="img-fluid pt-4" src="icons/usuario.png" height="100" width="100" alt="">
+                    <p class="pt-3">¡Resgitrate o Ingresa a tu cuenta!</p>
+                    <div class="pt-2">
+                        <p class="dot pt-2 text-white">1</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 containerSteps">
+                    <img class="img-fluid  pt-4" src="icons/click.png" height="100" width="100" alt="">
+                    <p class="pt-3">Da click en la opción "Cotización"</p>
+                    <div class="pt-2">
+                        <p class="dot pt-2 text-white">2</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 containerSteps">
+                    <img  class="img-fluid pt-4" src="icons/cotizacion.png" height="100" width="100" alt="">
+                    <p class="pt-3">¡Comienza tu cotizacion!</p>
+                    <div class="pt-2">
+                        <p class="dot pt-2 text-white">3</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="contenedor">
-        <h2>Contacto</h2>
+        <div class="contenedor colorSecundario">
+            <h2 class="text-center text-white">Contacto</h2>
         </div>
     </div>
 
-    <footer>
-    xjjxbqjkbzjak
+ 
+
+    <footer class="text-center p-2">
+      Fernando Bárcenas García
     </footer>
 </body>
 </html>
