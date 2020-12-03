@@ -6,6 +6,9 @@
             background: #0C2445;
         }
 
+        .s{
+            background: #4685D6;
+        }
         .colorSecundario{
             /*background: #FC9404;*/
             background: #fdd181;
@@ -86,6 +89,12 @@
             padding-left: 4%;
             padding-top: 4%;
         }
+
+        .blackColor{
+            color: black;
+        }
+
+  
 
         @media screen and (max-width: 800px) {
             .contenedorCuerpo{

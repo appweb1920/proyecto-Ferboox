@@ -21,6 +21,11 @@ Route::get('/catalogo', function () {
     return view('catalogo');
 });
 
+
+Route::get('/agrega', function () {
+    return view('agrega');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

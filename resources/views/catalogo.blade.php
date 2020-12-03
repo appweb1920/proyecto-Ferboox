@@ -12,33 +12,35 @@
     <link rel="stylesheet" href="CSS/base.css">
 </head>
 <body>
-    <!--Menu--->
-    <nav class="navbar navbar-expand-lg navbar-light colorPrimario" id = "menu">
-            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <!--Menu--->
+        <nav class="navbar navbar-expand-lg navbar-light colorPrimario" id ="menu">
+            <a class="navbar-brand" href="/">
+                <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" height="50" width="50" alt="">
+            </a>
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">
-            <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" height="50" width="50" alt=""></a>
-
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    <li class="nav-item active pr-2">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
+                    <li class="nav-item active">
                         <a class="nav-link" href="/">Inicio</a>
                     </li>
-                    <li class="nav-item  pr-2">
-                        <a class="nav-link" href="/catalogo">Catálogo</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Cotización</a>
                     </li>
-                    <li class="nav-item  pr-2">
-                        <a class="nav-link" href="#">Cotización</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Catálogo
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/catalogo">Ver productos</a>
+                            <a class="dropdown-item" href="/catalogo/agregar">Agregar Producto</a>
+                        </div>
                     </li>
-                    <li class="nav-item  pr-2">
-                        <a class="nav-link" href="#">Mi Cuenta</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Mi cuenta</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
             </div>
         </nav>
         <div class= "bg-light ">
@@ -68,7 +70,7 @@
                     </div>
                 </div>
                 <div class="col-sm-8 border-left border-dark zero">
-                    Productos
+                    <h3 class="ml-3">Productos</h3>
                     <div class="row row-cols-1 row-cols-md-3 contenedorTarjetas">
                         <div class="col mb-4">
                             <div class="card">
