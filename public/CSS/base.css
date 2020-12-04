@@ -44,6 +44,10 @@
             transition: 0.5s ease-in-out;
         }
 
+        .hei{
+            height: 500px;
+        }
+
         #pasos{
             margin-left: 7%;
             padding-top: 2%;

@@ -34,7 +34,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="/catalogo">Ver productos</a>
-                            <a class="dropdown-item" href="/catalogo/agregar">Agregar Producto</a>
+                            <a class="dropdown-item" href="/agrega">Agregar Producto</a>
                         </div>
                     </li>
                     <li class="nav-item">

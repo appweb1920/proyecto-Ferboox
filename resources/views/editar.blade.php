@@ -9,7 +9,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/base.css">
+    <link rel="stylesheet" href="/CSS/base.css">
     <style>
         .contenedorAgrega{
             margin-top: 1em;
@@ -61,22 +61,23 @@
             </div>
         </nav>
         <div class="contenedorAgrega">
-            <h2 class="text-center">Agrega tu producto</h2>
+            <h2 class="text-center">Editar producto</h2>
             <div class="subContenedor bg-light">
                 <h3 class="border-bottom border-dark">Datos</h3>
-                <form action="/registroProducto" method="POST" class="pt-4">
+                <form action="guardaProducto" method="POST" class="pt-4">
                     @csrf
+                    <input type="hidden" name="id" value="{{$producto->id}}">
                     <div class="form-group row">
                         <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nombre" placeholder="Nombre del producto">
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre del producto" value="{{$producto->nombre}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="categoria" class="col-sm-2 col-form-label">Categoria</label>
                         <div class="col-sm-10">
                             <select name="tipoCategoria" class="form-control">
-                                <option selected>Categoria del producto</option>
+                                <option selected>{{$producto->categoria_id}}</option>
                                 @if(!is_null($categorias))
                                     @foreach($categorias as $c)
                                     <option name="{{$c->id}}">{{$c->id}}</option>
@@ -88,13 +89,13 @@
                     <div class="form-group row">
                         <label for="cantidad" class="col-sm-2 col-form-label">Cantidad</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad de productos">
+                            <input type="number" class="form-control" value ="{{$producto->cantidad}}"id="cantidad" name="cantidad" placeholder="Cantidad de productos">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>
                         <div class="col-sm-10">
-                            <textarea name="descripcion" class="form-control" id="descripcion" placeholder="Breve descripción del producto"></textarea>
+                            <textarea name="descripcion" value="{{$producto->descripcion}}"class="form-control" id="descripcion" placeholder="Breve descripción del producto">{{$producto->descripcion}}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -105,7 +106,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10 button-right">
-                            <button type="submit" class="btn btn-primary ">Guardar</button>
+                            <button type="submit" class="btn btn-primary ">Actualizar</button>
                         </div>
                     </div>
                 </form>

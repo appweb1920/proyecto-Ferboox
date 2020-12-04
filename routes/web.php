@@ -17,14 +17,12 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::get('/catalogo', function () {
-    return view('catalogo');
-});
-
-
-Route::get('/agrega', function () {
-    return view('agrega');
-});
+Route::get('/catalogo',"ProductosController@index");
+Route::get('/agrega',"ProductosController@agregaProducto");
+Route::post('/registroProducto',"ProductosController@store");
+Route::get('/editarProducto/{id}','ProductosController@show');
+Route::post('/editarProducto/guardaProducto','ProductosController@guardaCampos');
+Route::get('/borrarProducto/{id}','ProductosController@destroy');
 
 Auth::routes();
 
