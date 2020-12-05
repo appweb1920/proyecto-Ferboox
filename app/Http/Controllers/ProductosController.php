@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Producto;
 use App\Categoria;
+use App\Mail\Primero;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ProductosController extends Controller
 {
@@ -118,5 +120,14 @@ class ProductosController extends Controller
         $producto = Producto::find($id);
         $producto->delete();
         return redirect('/catalogo');
+    }
+
+    public function enviaCorreo()
+    {
+        //Mail::to($request->user())->send(new OrderShipped($order));
+
+        Mail::to("ferbargar99@hotmail.com")->send(new Primero());
+
+        return "exito";
     }
 }

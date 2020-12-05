@@ -32,7 +32,8 @@
      <!--Menu--->
      <nav class="navbar navbar-expand-lg navbar-light colorPrimario" id ="menu">
             <a class="navbar-brand" href="/">
-                <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" height="50" width="50" alt="">
+                <img src="icons/construccion.png" height="50" width="50" alt="">
+                ConstruMx
             </a>
             <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

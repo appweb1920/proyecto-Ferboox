@@ -24,6 +24,7 @@ Route::get('/editarProducto/{id}','ProductosController@show');
 Route::post('/editarProducto/guardaProducto','ProductosController@guardaCampos');
 Route::get('/borrarProducto/{id}','ProductosController@destroy');
 
+Route::get('/enviaCorreo','ProductosController@enviaCorreo');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
