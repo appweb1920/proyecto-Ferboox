@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Producto;
 use App\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductosController extends Controller
 {
@@ -15,7 +16,9 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $productos = Producto::all();
+
+        $productos = DB::table('productos')->paginate(8);
+
         return view('catalogo')->with('productos',$productos);
     }
 

@@ -80,7 +80,7 @@
                                 <option selected>{{$producto->categoria_id}}</option>
                                 @if(!is_null($categorias))
                                     @foreach($categorias as $c)
-                                    <option name="{{$c->id}}">{{$c->id}}</option>
+                                    <option value="{{$c->id}}">{{$c->tipoCategoria}}</option>
                                     @endforeach
                                 @endif
                             </select>

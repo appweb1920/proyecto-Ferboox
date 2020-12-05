@@ -14,6 +14,10 @@
         .hei{
             height: 650px;
         }
+
+        .mar-left{
+            margin-left: 8%;
+        }
     </style>
 </head>
 <body>
@@ -48,7 +52,7 @@
                 </ul>
             </div>
         </nav>
-        <div class= "bg-light hei">
+        <div class= "bg-light">
             <h2 class="text-center p-2">Catálogo</h2>
             <div class="row zero">
                 <div class="col-sm-2">
@@ -74,9 +78,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-8 border-left border-dark zero">
+                <div class="col-sm-10 border-left border-dark">
                     <h3 class="ml-3">Productos</h3>
-                    <div class="row row-cols-1 row-cols-md-3 contenedorTarjetas">
+                    <div class="row row-cols-1 row-cols-md-4 contenedorTarjetas pb-5 pr-3">
                         @if(!is_null($productos))
                             @foreach($productos as $p)
                             <div class="col mb-4">
@@ -107,9 +111,12 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        
+            <div class="d-flex">
+                <div class="mx-auto">
+                    {{$productos->links("pagination::bootstrap-4")}}
+                </div>
+            </div>
+        </div>        
     <footer class="text-center p-2">
       Fernando Bárcenas García
     </footer>
