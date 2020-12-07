@@ -16,14 +16,25 @@ class ProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $nombre = $request->nombre;
+        $categoria = $request->id;
 
-        $productos = DB::table('productos')->paginate(8);
+        //dd($categoria);
 
-        return view('catalogo')->with('productos',$productos);
+        $categorias = Categoria::all();
+        //$productos = DB::table('productos')->paginate(8);
+        $productos = Producto::orderBy('id','DESC')->nombre($nombre)->categoria($categoria)->paginate(8);
+
+        return view('catalogo')->with('productos',$productos)->with('categorias',$categorias);
     }
 
+    public function search(Request $request)
+    {
+        $nombre ->request->name;
+
+    }
     /**
      * Show the form for creating a new resource.
      *

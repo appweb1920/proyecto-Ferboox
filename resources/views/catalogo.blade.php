@@ -55,32 +55,46 @@
         </nav>
         <div class= "bg-light">
             <h2 class="text-center p-2">Catálogo</h2>
+          
             <div class="row zero">
+                
                 <div class="col-sm-2">
-                    Filtros
+                    Departamentos
                     <div>
-                        <ul class="p-1 filtroLista">
-                            <li>
-                                <input type="checkbox" id = "1">
-                                <label for="precio1">$0.00 - $250.00</label>
-                            </li>
-                            <li>
-                                <input type="checkbox">
-                                <label for="precio2">$250.00 - $500.00</label>
-                            </li>
-                            <li>
-                                <input type="checkbox">
-                                <label for="precio3">$500.00 - $1,000.00</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id ="4">
-                                <label for="precio4">$1,000.00 - $10,000.00</label>
-                            </li>
-                        </ul>
+                        <form action="/catalogo" method="GET">  
+                           <ul class="p-1 filtroLista">
+                            @if(!is_null($categorias))
+                                @foreach($categorias as $c)
+                                <li>
+                                    <input type="checkbox" name="id" value="{{$c->id}}" class="form-group" onChange="this.form.submit()">
+                                    <label for="{{$c->id}}">{{$c->tipoCategoria}}</label>
+                                </li>
+                                @endforeach
+                            @endif
+                            </ul>
+                        </form>
+                    </div>
+
+                    <div>
+                        <form action="/agregarCategoria" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Agregar Categoría</label>
+                                <input type="text" class="form-control mb-1" id="formGroupExampleInput" name="categoria" placeholder="Arneses">
+                                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Agregar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-sm-10 border-left border-dark">
                     <h3 class="ml-3">Productos</h3>
+                    <div class="d-flex justify-content-center">
+                        <form class="form-inline my-2 my-lg-0"  action="/catalogo" method="GET">
+                            @csrf
+                            <input class="form-control mr-sm-3" type="search" placeholder="Búsqueda por nombre" aria-label="Search" name="nombre">
+                            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Buscar</button>
+                        </form>
+                    </div>
                     <div class="row row-cols-1 row-cols-md-4 contenedorTarjetas pb-5 pr-3">
                         @if(!is_null($productos))
                             @foreach($productos as $p)
