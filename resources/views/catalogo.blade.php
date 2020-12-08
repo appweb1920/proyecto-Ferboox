@@ -10,15 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/base.css">
-    <style>
-        .hei{
-            height: 650px;
-        }
-
-        .mar-left{
-            margin-left: 8%;
-        }
-    </style>
+    <link rel="stylesheet" href="base2.css">
 </head>
 <body>
         <!--Menu--->
@@ -42,8 +34,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Catálogo
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/catalogo">Ver productos</a>
+                        <div class="dropdown-menu back-lo" id="dro">
+                            <a class="dropdown-item back-lo" href="/catalogo">Ver productos</a>
                             <a class="dropdown-item" href="/agrega">Agregar Producto</a>
                         </div>
                     </li>
@@ -95,12 +87,14 @@
                             <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Buscar</button>
                         </form>
                     </div>
-                    <div class="row row-cols-1 row-cols-md-4 contenedorTarjetas pb-5 pr-3">
-                        @if(!is_null($productos))
+                    @if(!is_null($productos) && count($productos) > 0)
+                       <div class="row row-cols-1 row-cols-md-4 contenedorTarjetas mar-bottom pr-3">
                             @foreach($productos as $p)
                             <div class="col mb-4">
                                 <div class="card">
                                     <img src="https://lh3.googleusercontent.com/aR34MxRBretppyADbJcfqIZp-LraO1ELhk00lTZw0Q7MF1ebUKZeggeQkjBuZCCmYRSYNzr8=w640-h400-e365-rj-sc0x00ffffff" class="card-img-top" alt="...">
+                                    <!--<img src="imgs/kk.jpg" class="card-img-top" alt="">-->
+                                    
                                     <div class="card-body">
                                         <h5 class="card-title">{{$p->nombre}}</h5>
                                         <p class="card-text">{{$p->descripcion}}</p>
@@ -122,8 +116,12 @@
                                 </div>
                             </div>
                             @endforeach
+                        </div>
+                        @else
+                            <div class="text-center col-sm-12 mt-2 mb-4 contenedorNotFound">
+                                <h3>Lo sentimos. No hay resultados para: "{{$nombre}}"</h3>
+                            </div>
                         @endif
-                    </div>
                 </div>
             </div>
             <div class="d-flex">

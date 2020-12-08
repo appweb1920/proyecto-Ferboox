@@ -27,7 +27,10 @@ class ProductosController extends Controller
         //$productos = DB::table('productos')->paginate(8);
         $productos = Producto::orderBy('id','DESC')->nombre($nombre)->categoria($categoria)->paginate(8);
 
-        return view('catalogo')->with('productos',$productos)->with('categorias',$categorias);
+        //dd(count($productos));
+
+
+        return view('catalogo')->with('productos',$productos)->with('categorias',$categorias)->with('nombre',$nombre);
     }
 
     public function search(Request $request)

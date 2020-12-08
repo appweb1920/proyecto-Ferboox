@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/base.css">
+    <link rel="stylesheet" href="base2.css">
     <style>
         .contenedorAgrega{
             margin-top: 1em;
@@ -50,8 +51,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Catálogo
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/catalogo">Ver productos</a>
+                        <div class="dropdown-menu back-lo" id="dro">
+                            <a class="dropdown-item back-lo" href="/catalogo">Ver productos</a>
                             <a class="dropdown-item" href="/agrega">Agregar Producto</a>
                         </div>
                     </li>
