@@ -22,9 +22,15 @@
     background-color: #ca882b;
 }
 
-#image img{
-    width: auto;
-    height: auto;
+.ieded-z{
+    height:3em;
+    width:2em;
+    padding:1em 2em;
+    position:Absolute
+}
+
+.contenedorTabla{
+    padding: 1em 1em;
 }
 
 @media screen and (max-width: 800px) {

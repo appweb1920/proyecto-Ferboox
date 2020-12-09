@@ -25,6 +25,11 @@ Route::post('/editarProducto/guardaProducto','ProductosController@guardaCampos')
 Route::get('/borrarProducto/{id}','ProductosController@destroy');
 Route::get('/enviaCorreo','ProductosController@enviaCorreo');
 Route::post('/agregarCategoria',"CategoriasController@store");
+
+
+Route::get('/cotizador', function () {
+    return view('cotizador');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

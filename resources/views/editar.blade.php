@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/CSS/base.css">
-    <link rel="stylesheet" href="base2.css">
+    <link rel="stylesheet" href="/base2.css">
 
     <style>
         .contenedorAgrega{
@@ -34,10 +34,8 @@
      <!--Menu--->
      <nav class="navbar navbar-expand-lg navbar-light colorPrimario" id ="menu">
             <a class="navbar-brand" href="/">
-            <a class="navbar-brand" href="/">
-                <img src="icons/construccion.png" height="50" width="50" alt="">
+                <img src="/icons/construccion.png" height="50" width="50" alt="">
                 ConstruMx
-            </a>
             </a>
             <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -48,7 +46,7 @@
                         <a class="nav-link" href="/">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Cotización</a>
+                        <a class="nav-link" href="/cotizador">Cotización</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,13 +60,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Mi cuenta</a>
                     </li>
-                    <li>
-                        <form class="form-inline my-2 my-lg-0"  action="/catalogo" method="GET">
-                            @csrf
-                            <input class="form-control mr-sm-3" type="search" placeholder="Búsqueda por nombre" aria-label="Search" name="nombre">
-                            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Buscar</button>
-                        </form>
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -76,7 +67,7 @@
             <h2 class="text-center">Editar producto</h2>
             <div class="subContenedor bg-light">
                 <h3 class="border-bottom border-dark">Datos</h3>
-                <form action="guardaProducto" method="POST" class="pt-4">
+                <form action="guardaProducto" method="POST" class="pt-4"  enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{$producto->id}}">
                     <div class="form-group row">
@@ -111,9 +102,15 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="imagen" class="col-sm-2 col-form-label">Imagen del producto</label>
+                        <label for="precio" class="col-sm-2 col-form-label">Precio</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control-file" id="imagen">
+                            <input name="precio" class="form-control" id="precio" placeholder="0.00" step="any" type="number" min="0.01" value="{{$producto->precio}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="foto" class="col-sm-2 col-form-label">Imagen del producto</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control-file" id="foto" name="foto" accept="image/png, image/jpg" value="{{$producto->foto}}">
                         </div>
                     </div>
                     <div class="form-group row">

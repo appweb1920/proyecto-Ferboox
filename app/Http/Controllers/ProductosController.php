@@ -70,6 +70,7 @@ class ProductosController extends Controller
         $producto->precio=$request->precio;
 
         $archivo=$request->file('foto');
+        
         $path=$request->file('foto')->storeAs(
             'public/imgStore',$archivo->getClientOriginalName().".".$archivo->getClientOriginalExtension());
 
@@ -101,6 +102,17 @@ class ProductosController extends Controller
         $producto->descripcion=$request->descripcion;
         $producto->cantidad=$request->cantidad;
         $producto->categoria_id=$request->tipoCategoria;
+
+        $producto->precio=$request->precio;
+
+
+        $archivo=$request->file('foto');
+
+        $path=$request->file('foto')->storeAs(
+            'public/imgStore',$archivo->getClientOriginalName().".".$archivo->getClientOriginalExtension());
+
+        $producto->foto = $archivo->getClientOriginalName().".".$archivo->getClientOriginalExtension();
+
         $producto->save();
     
         return redirect('/catalogo');
