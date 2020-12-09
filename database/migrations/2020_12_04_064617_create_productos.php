@@ -18,6 +18,8 @@ class CreateProductos extends Migration
             $table->string('nombre');
             $table->mediumText('descripcion');
             $table->integer('cantidad');
+            $table->float('precio',8,2);
+            $table->string('foto');
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->timestamps();

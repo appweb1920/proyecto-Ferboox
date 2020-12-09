@@ -66,7 +66,7 @@
             <h2 class="text-center">Agrega tu producto</h2>
             <div class="subContenedor bg-light">
                 <h3 class="border-bottom border-dark">Datos</h3>
-                <form action="/registroProducto" method="POST" class="pt-4">
+                <form action="/registroProducto" method="POST" class="pt-4" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                         <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
@@ -100,9 +100,15 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="imagen" class="col-sm-2 col-form-label">Imagen del producto</label>
+                        <label for="precio" class="col-sm-2 col-form-label">Precio</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control-file" id="imagen">
+                            <input name="precio" class="form-control" id="precio" placeholder="0.00" step="any" type="number" min="0.01">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="foto" class="col-sm-2 col-form-label">Imagen del producto</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control-file" id="foto" name="foto" accept="image/png, image/jpg">
                         </div>
                     </div>
                     <div class="form-group row">

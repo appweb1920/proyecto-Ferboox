@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     protected $table = "productos";
-    protected $fillable =['nombre','categoria_id','cantidad','descripcion'];
+    protected $fillable =['nombre','categoria_id','cantidad','descripcion','foto','precio'];
 
     public function scopeNombre($query, $nombre)
     {

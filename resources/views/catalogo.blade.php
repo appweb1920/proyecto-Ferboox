@@ -92,7 +92,9 @@
                             @foreach($productos as $p)
                             <div class="col mb-4">
                                 <div class="card">
-                                    <img src="https://lh3.googleusercontent.com/aR34MxRBretppyADbJcfqIZp-LraO1ELhk00lTZw0Q7MF1ebUKZeggeQkjBuZCCmYRSYNzr8=w640-h400-e365-rj-sc0x00ffffff" class="card-img-top" alt="...">
+                                    <div id="image">
+                                        <img src="{{asset('/storage/imgStore/'.$p->foto)}}" class="img-fluid" alt="...">
+                                    </div>
                                     <!--<img src="imgs/kk.jpg" class="card-img-top" alt="">-->
                                     
                                     <div class="card-body">
@@ -122,11 +124,11 @@
                                 <h3>Lo sentimos. No hay resultados para: "{{$nombre}}"</h3>
                             </div>
                         @endif
-                </div>
-            </div>
-            <div class="d-flex">
-                <div class="mx-auto">
-                    {{$productos->links("pagination::bootstrap-4")}}
+                        <div class="d-flex">
+                            <div class="mx-auto">
+                                    {{$productos->links("pagination::bootstrap-4")}}
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>        
