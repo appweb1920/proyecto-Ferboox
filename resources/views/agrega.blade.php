@@ -42,7 +42,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/cotizador">Inicio</a>
+                        <a class="nav-link" href="/pdf">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">Cotización</a>

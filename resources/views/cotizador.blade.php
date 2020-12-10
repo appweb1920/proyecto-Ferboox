@@ -9,7 +9,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/base.css">
+    <link rel="stylesheet" href="/CSS/base.css">
     <link rel="stylesheet" href="base2.css">
     <style>
             
@@ -29,7 +29,7 @@
     <!--Menu--->
     <nav class="navbar navbar-expand-lg navbar-light colorPrimario" id ="menu">
             <a class="navbar-brand" href="/">
-                <img src="icons/construccion.png" height="50" width="50" alt="">
+                <img src="/icons/construccion.png" height="50" width="50" alt="">
                 ConstruMx
             </a>
             <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@
                         <a class="nav-link" href="/">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/cotizador">Cotización</a>
+                        <a class="nav-link" href="/pdf">Cotización</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,19 +69,24 @@
             <h2 class="text-center pt-3 pb-3">Cotizador</h2>
             <div class="contenedorTabla">
                 <div class="formularioCotizador">
-                    <form>
+                    <form action="/pdf/almacenaProducto" method="POST">
                         @csrf
+                        <input type="hidden" name="pdf_id"  value ='{{$pdf->id}}'>
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="cantidad">Producto</label>
-                                <select id="cantidad" class="form-control">
+                                <label for="product">Producto</label>
+                                <select id="product" name="producto_id" class="form-control">
                                     <option selected>Escoger...</option>
-                                    <option>...</option>
+                                    @if(!is_null($productos))
+                                        @foreach($productos as $p)
+                                        <option value="{{$p->id}}">{{$p->nombre}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="col-md-2">
                                 <label for="numero">Cantidad</label>
-                                <input type="number" name="numero" class="form-control" value = "0" min="0">
+                                <input type="number" name="cantidad" class="form-control" value = "0" min="0">
                             </div>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Agregar</button>
                           
@@ -99,12 +104,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            </tr>
+                              <!--Despliega todos los datos de la tabla puntos-->
+                            @foreach($pdf->getProductos() as $pd)    
+                                <tr>
+                                    <th scope="row">{{$pd->nombre}}</th>
+                                    <td>{{$pd->descripcion}}</td>
+                                    <td>{{$pd->cantidad}}</td>
+                                    <td>{{$pd->precio}}</td>
+                                </tr>
+                            @endforeach       
                         </tbody>
                     </table>
                 </div>
