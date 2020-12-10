@@ -104,17 +104,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php($total=0)
                               <!--Despliega todos los datos de la tabla puntos-->
                             @foreach($pdf->getProductos() as $pd)    
                                 <tr>
                                     <th scope="row">{{$pd->nombre}}</th>
                                     <td>{{$pd->descripcion}}</td>
                                     <td>{{$pd->cantidad}}</td>
-                                    <td>{{$pd->precio}}</td>
+                                    <td>{{$pd->cotizacion_precio}}</td>
+                                    <td><a href="/quitaProducto/{{$pdf->id}}&&{{$pd->cotizacion_id}}"><img src="/icons/x-mark.png" height="20" width="20" alt=""></a></td>
                                 </tr>
+                                @php ($total += $pd->cotizacion_precio) 
                             @endforeach       
                         </tbody>
                     </table>
+                    <div>
+                        <h6 class="text-right">Total: {{$total}}</h6>
+                    </div>
                 </div>
             </div>
         </div>

@@ -14,9 +14,11 @@ class Cotizacion extends Migration
     public function up()
     {
         Schema::create('cotizacion', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('producto_id');
             $table->unsignedBigInteger('pdf_id');
             $table->integer('cantidad');
+            $table->float('precio',8,2);
             $table->foreign('producto_id')->references('id')->on('productos');
             $table->foreign('pdf_id')->references('id')->on('pdf');
             $table->timestamps();

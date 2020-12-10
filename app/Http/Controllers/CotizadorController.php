@@ -46,6 +46,11 @@ class CotizadorController extends Controller
         $cotizador->producto_id = $request->producto_id;
         $cotizador->cantidad = $request->cantidad;
 
+        $producto = Producto::find($request->producto_id);
+        
+
+        $cotizador->precio = $request->cantidad * $producto->precio;
+
         $productos = Producto::all();
         $pdf = Pdf::find($request->pdf_id);
 
@@ -94,8 +99,14 @@ class CotizadorController extends Controller
      * @param  \App\Cotizador  $cotizador
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cotizador $cotizador)
+    public function destroy($id,$cotizacion_id)
     {
-        //
+        $cotizador = Cotizador::find($cotizacion_id);
+        $cotizador->delete();
+
+        $pdf = Pdf::find($id);
+
+        $productos = Producto::all();
+        return view('cotizador')->with('pdf',$pdf)->with('productos',$productos);
     }
 }

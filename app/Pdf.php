@@ -16,7 +16,7 @@ class Pdf extends Model
         ->join('productos', 'productos.id', '=', 'cotizacion.producto_id')
         ->join('pdf', 'pdf.id', '=', 'cotizacion.pdf_id')
         ->where('cotizacion.pdf_id',$this->id)
-        ->select('productos.nombre','productos.precio','productos.descripcion','cotizacion.cantidad')
+        ->select('productos.nombre','productos.descripcion','cotizacion.cantidad','cotizacion.id AS cotizacion_id','cotizacion.precio AS cotizacion_precio')
         ->get();
         
         return $productos;

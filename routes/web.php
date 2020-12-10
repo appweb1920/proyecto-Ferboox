@@ -28,6 +28,7 @@ Route::post('/agregarCategoria',"CategoriasController@store");
 Route::get('/pdf','PdfsController@create');
 Route::post('/pdf/guarda',"PdfsController@store");
 Route::post('/pdf/almacenaProducto','CotizadorController@store');
+Route::get('/quitaProducto/{id}&&{cotizacion_id}','CotizadorController@destroy');
 
 
 Auth::routes();
