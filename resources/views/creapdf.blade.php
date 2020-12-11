@@ -13,7 +13,64 @@
     <link rel="stylesheet" href="base2.css">
 
     <style>
-        
+        .login-container{
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.contenedor{
+    height: auto;
+}
+.login-logo{
+    position: relative;
+    margin-left: -41.5%;
+}
+.login-logo img{
+    position: absolute;
+    width: 20%;
+    margin-top: 19%;
+    background: #0C2445;
+    border-radius: 4.5rem;
+    padding: 5%;
+}
+.login-form-1{
+    padding: 9%;
+    background:#0C2445;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color:#fff;
+}
+.login-form-2{
+    padding: 9%;
+    background: #FC9404;;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color: #fff;
+}
+.btnSubmit{
+    font-weight: 600;
+    width: 50%;
+    color: #282726;
+    background-color: #fff;
+    border: none;
+    border-radius: 1.5rem;
+    padding:2%;
+}
+.btnForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.btnForgetPwd:hover{
+    text-decoration:none;
+    color:#fff;
+}
     </style>
 </head>
 <body>
@@ -56,12 +113,39 @@
                 </ul>
             </div>
         </nav>
-        <div>
-            <form action="/pdf/guarda" method="POST">
-                @csrf
-                <input type="text" name="nombre" placeholder="Nombre de tu cotización">
-                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
+        <div class="contenedor bg-light">
+            <div class="container login-container">
+                <div class="row">
+                    <div class="col-md-6 login-form-1">
+                        <h3>Pasos:</h3>
+                        <ol class="text-white">
+                        <li>Da un nombre a tu cotizacion</li>
+                        <li>Agrega los productos que desees</li>
+                        <li>Finaliza tu cotización</li>
+                        </ol>
+                          
+                        
+                    </div>
+                    <div class="col-md-6 login-form-2">
+                        <div class="login-logo">
+                            <img src="icons/crear.png" alt=""/>
+                        </div>
+                        <h3>Empieza tu cotización</h3>
+                            <form action="/pdf/guarda" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <input type="text" name="nombre" class="form-control" placeholder="Nombre de tu cotización">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btnSubmit" value="Craer">
+                            </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
         </div>
+        <footer class="text-center p-2">
+            Fernando Bárcenas García
+        </footer>
 </body>
 </html>

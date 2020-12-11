@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/CSS/base.css">
-    <link rel="stylesheet" href="base2.css">
+    <link rel="stylesheet" href="/base2.css">
     <style>
             
         .contenedorTabla{
@@ -119,7 +119,7 @@
                         </tbody>
                     </table>
                     <div>
-                        <h6 class="text-right">Total: {{$total}}</h6>
+                        <h6 class="text-right">Total: ${{$total}} MXN</h6>
                     </div>
                 </div>
             </div>
