@@ -39,29 +39,54 @@
             <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse " id="navbarNavDropdown">
                 <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/pdf">Inicio</a>
+                        <a class="nav-link" href="/">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Cotización</a>
+                        <a class="nav-link" href="/pdf">Cotización</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Catálogo
-                        </a>
-                        <div class="dropdown-menu back-lo" id="dro">
-                            <a class="dropdown-item back-lo" href="/catalogo">Ver productos</a>
-                            <a class="dropdown-item" href="/agrega">Agregar Producto</a>
-                        </div>
-                    </li>
+                    @if(!is_null($user))
+                        @if($user->tipo == 2)
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Catálogo
+                            </a>
+                            
+                            <div class="dropdown-menu back-lo" id="dro">
+                                <a class="dropdown-item back-lo" href="/catalogo">Ver productos</a>
+                                <a class="dropdown-item" href="/agrega">Agregar Producto</a>   
+                            </div>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/catalogo">Catalogo</a>
+                        </li>
+                        @endif
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/catalogo">Catalogo</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Mi cuenta</a>
+                        @if(is_null($user))
+                        <a class="nav-link" href="/home">Registrate o Inicia Sesión</a>
+                        @else
+                        <a class="nav-link" href="/home">¡Hola {{$user->name}}!</a>
+                        @endif
+                    </li>
+                    <li>
+                        <form class="form-inline my-2 my-lg-0"  action="/catalogo" method="GET">
+                            @csrf
+                            <input class="form-control mr-sm-3" type="search" placeholder="Búsqueda por nombre" aria-label="Search" name="nombre">
+                            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Buscar</button>
+                        </form>
                     </li>
                 </ul>
             </div>
         </nav>
+
         <div class="contenedorAgrega">
             <h2 class="text-center">Agrega tu producto</h2>
             <div class="subContenedor bg-light">

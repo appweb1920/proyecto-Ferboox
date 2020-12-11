@@ -31,17 +31,34 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/pdf">Cotización</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Catálogo
-                        </a>
-                        <div class="dropdown-menu back-lo" id="dro">
-                            <a class="dropdown-item back-lo" href="/catalogo">Ver productos</a>
-                            <a class="dropdown-item" href="/agrega">Agregar Producto</a>
-                        </div>
-                    </li>
+                    @if(!is_null($user))
+                        @if($user->tipo == 2)
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Catálogo
+                            </a>
+                            
+                            <div class="dropdown-menu back-lo" id="dro">
+                                <a class="dropdown-item back-lo" href="/catalogo">Ver productos</a>
+                                <a class="dropdown-item" href="/agrega">Agregar Producto</a>   
+                            </div>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/catalogo">Catalogo</a>
+                        </li>
+                        @endif
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/catalogo">Catalogo</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Mi cuenta</a>
+                        @if(is_null($user))
+                        <a class="nav-link" href="/home">Registrate o Inicia Sesión</a>
+                        @else
+                        <a class="nav-link" href="/home">¡Hola {{$user->name}}!</a>
+                        @endif
                     </li>
                     <li>
                         <form class="form-inline my-2 my-lg-0"  action="/catalogo" method="GET">

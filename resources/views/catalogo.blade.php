@@ -14,7 +14,7 @@
 </head>
 <body>
         <!--Menu--->
-        <nav class="navbar navbar-expand-lg navbar-light colorPrimario" id ="menu">
+      <nav class="navbar navbar-expand-lg navbar-light colorPrimario" id ="menu">
             <a class="navbar-brand" href="/">
                 <img src="icons/construccion.png" height="50" width="50" alt="">
                 ConstruMx
@@ -22,7 +22,7 @@
             <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse " id="navbarNavDropdown">
                 <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Inicio</a>
@@ -30,21 +30,39 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/pdf">Cotización</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Catálogo
-                        </a>
-                        <div class="dropdown-menu back-lo" id="dro">
-                            <a class="dropdown-item back-lo" href="/catalogo">Ver productos</a>
-                            <a class="dropdown-item" href="/agrega">Agregar Producto</a>
-                        </div>
-                    </li>
+                    @if(!is_null($user))
+                        @if($user->tipo == 2)
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Catálogo
+                            </a>
+                            
+                            <div class="dropdown-menu back-lo" id="dro">
+                                <a class="dropdown-item back-lo" href="/catalogo">Ver productos</a>
+                                <a class="dropdown-item" href="/agrega">Agregar Producto</a>   
+                            </div>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/catalogo">Catalogo</a>
+                        </li>
+                        @endif
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/catalogo">Catalogo</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Mi cuenta</a>
+                        @if(is_null($user))
+                        <a class="nav-link" href="/home">Registrate o Inicia Sesión</a>
+                        @else
+                        <a class="nav-link" href="/home">¡Hola {{$user->name}}!</a>
+                        @endif
                     </li>
                 </ul>
             </div>
         </nav>
+
         <div class= "bg-light">
             <h2 class="text-center p-2">Catálogo</h2>
           
@@ -66,17 +84,20 @@
                             </ul>
                         </form>
                     </div>
-
-                    <div>
-                        <form action="/agregarCategoria" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label for="formGroupExampleInput">Agregar Categoría</label>
-                                <input type="text" class="form-control mb-1" id="formGroupExampleInput" name="categoria" placeholder="Arneses">
-                                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Agregar</button>
-                            </div>
-                        </form>
-                    </div>
+                    @if(!is_null($user))
+                        @if($user->tipo == 2)
+                        <div>
+                            <form action="/agregarCategoria" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Agregar Categoría</label>
+                                    <input type="text" class="form-control mb-1" id="formGroupExampleInput" name="categoria" placeholder="Arneses">
+                                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Agregar</button>
+                                </div>
+                            </form>
+                        </div>
+                        @endif
+                    @endif
                 </div>
                 <div class="col-sm-10 border-left border-dark">
                     <h3 class="ml-3">Productos</h3>

@@ -8,6 +8,8 @@ use App\Mail\Primero;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+
 use PDF;
 
 class ProductosController extends Controller
@@ -19,19 +21,15 @@ class ProductosController extends Controller
      */
     public function index(Request $request)
     {
+        $user=Auth::user();
         $nombre = $request->nombre;
         $categoria = $request->id;
-
-        //dd($categoria);
 
         $categorias = Categoria::all();
         //$productos = DB::table('productos')->paginate(8);
         $productos = Producto::orderBy('id','DESC')->nombre($nombre)->categoria($categoria)->paginate(8)->withQueryString();;
 
-        //dd(count($productos));
-
-
-        return view('catalogo')->with('productos',$productos)->with('categorias',$categorias)->with('nombre',$nombre);
+        return view('catalogo')->with('productos',$productos)->with('categorias',$categorias)->with('nombre',$nombre)->with('user',$user);
     }
 
     public function search(Request $request)
@@ -51,8 +49,17 @@ class ProductosController extends Controller
 
     public function agregaProducto()
     {
+        $user = Auth::user();
         $categorias = Categoria::all();
-        return view('agrega')->with('categorias',$categorias);
+
+        if(is_null($user))
+            return view('auth/login');
+        else       
+            if($user->tipo == 2)
+                return view('agrega')->with('categorias',$categorias) ->with('user',$user);
+            else
+                return back();
+        
     }
 
     /**

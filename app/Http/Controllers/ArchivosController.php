@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Archivo;
 use App\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArchivosController extends Controller
 {
@@ -25,7 +26,11 @@ class ArchivosController extends Controller
      */
     public function create()
     {
-        return view('creapdf');
+        $user = Auth::user();
+        if (!is_null($user))
+            return view('creapdf')->with('user',$user);
+        else
+            return view('auth/login');;
     }
 
     /**

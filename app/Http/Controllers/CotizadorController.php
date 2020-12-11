@@ -7,6 +7,7 @@ use App\Producto;
 use App\Archivo;
 use Illuminate\Http\Request;
 use PDF;
+use Illuminate\Support\Facades\Auth;
 
 class CotizadorController extends Controller
 {
