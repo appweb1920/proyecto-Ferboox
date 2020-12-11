@@ -8,6 +8,7 @@ use App\Mail\Primero;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use PDF;
 
 class ProductosController extends Controller
 {
@@ -154,6 +155,7 @@ class ProductosController extends Controller
         $producto->delete();
         return redirect('/catalogo');
     }
+
 
     public function enviaCorreo()
     {

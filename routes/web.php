@@ -25,10 +25,11 @@ Route::post('/editarProducto/guardaProducto','ProductosController@guardaCampos')
 Route::get('/borrarProducto/{id}','ProductosController@destroy');
 Route::get('/enviaCorreo','ProductosController@enviaCorreo');
 Route::post('/agregarCategoria',"CategoriasController@store");
-Route::get('/pdf','PdfsController@create');
-Route::post('/pdf/guarda',"PdfsController@store");
+Route::get('/pdf','ArchivosController@create');
+Route::post('/pdf/guarda',"ArchivosController@store");
 Route::post('/pdf/almacenaProducto','CotizadorController@store');
 Route::get('/quitaProducto/{id}&&{cotizacion_id}','CotizadorController@destroy');
+Route::get('/pdf/descargaCotizacion/{id}','CotizadorController@descargaPDF');
 
 
 Auth::routes();

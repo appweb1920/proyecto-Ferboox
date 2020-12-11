@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Cotizador;
 use App\Producto;
-use App\Pdf;
+use App\Archivo;
 use Illuminate\Http\Request;
+use PDF;
 
 class CotizadorController extends Controller
 {
@@ -52,7 +53,7 @@ class CotizadorController extends Controller
         $cotizador->precio = $request->cantidad * $producto->precio;
 
         $productos = Producto::all();
-        $pdf = Pdf::find($request->pdf_id);
+        $pdf = Archivo::find($request->pdf_id);
 
         $cotizador->save();
 
@@ -93,6 +94,16 @@ class CotizadorController extends Controller
         //
     }
 
+    public function descargaPDF($id)
+    {
+        $pdf = Archivo::find($id);
+        $productos = Producto::all();
+
+
+        $archivo = PDF::loadView('templatePDF',["pdf"=>$pdf,"productos"=>$productos]);
+        return $archivo->download($pdf->nombre.'.pdf');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -104,7 +115,7 @@ class CotizadorController extends Controller
         $cotizador = Cotizador::find($cotizacion_id);
         $cotizador->delete();
 
-        $pdf = Pdf::find($id);
+        $pdf = Archivo::find($id);
 
         $productos = Producto::all();
         return view('cotizador')->with('pdf',$pdf)->with('productos',$productos);
