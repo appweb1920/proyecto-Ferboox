@@ -122,18 +122,22 @@
                                         <h5 class="card-title">{{$p->nombre}}</h5>
                                         <p class="card-text">{{$p->descripcion}}</p>
                                         <p class="card-text">Qty.{{$p->cantidad}}</p>
-                                        <div class="zero text-center">
-                                            <button type="button" class="btn btn-primary btn-sm">
-                                            <a href="/editarProducto/{{$p->id}}">
-                                                <img class="img-fluid" src="icons/editar.png" height="20" width="20">
-                                            </a>
-                                            </button>
-                                            <button type="button" class="btn btn-danger btn-sm">
-                                                <a href="/borrarProducto/{{$p->id}}">
-                                                    <img class="img-fluid" src="icons/borrar.png" height="20" width="20">
+                                        @if(!is_null($user))
+                                            @if($user->tipo == 2)
+                                            <div class="zero text-center">
+                                                <button type="button" class="btn btn-primary btn-sm">
+                                                <a href="/editarProducto/{{$p->id}}">
+                                                    <img class="img-fluid" src="icons/editar.png" height="20" width="20">
                                                 </a>
-                                            </button>
-                                        </div>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-sm">
+                                                    <a href="/borrarProducto/{{$p->id}}">
+                                                        <img class="img-fluid" src="icons/borrar.png" height="20" width="20">
+                                                    </a>
+                                                </button>
+                                            </div>
+                                            @endif
+                                        @endif
                                        
                                     </div>
                                 </div>

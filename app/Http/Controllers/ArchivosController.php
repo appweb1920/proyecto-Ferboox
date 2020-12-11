@@ -41,13 +41,14 @@ class ArchivosController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
         $productos = Producto::all();
         $pdf = new Archivo;
         $pdf->nombre = $request->nombre;
         $pdf->save();
+        
 
-
-        return view('cotizador')->with('pdf',$pdf)->with('productos',$productos);
+        return view('cotizador')->with('pdf',$pdf)->with('productos',$productos)->with('user',$user);
     }
 
     /**

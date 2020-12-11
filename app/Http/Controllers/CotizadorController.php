@@ -56,9 +56,11 @@ class CotizadorController extends Controller
         $productos = Producto::all();
         $pdf = Archivo::find($request->pdf_id);
 
+        $user = Auth::user();
+
         $cotizador->save();
 
-        return view('cotizador')->with('pdf',$pdf)->with('productos',$productos);
+        return view('cotizador')->with('pdf',$pdf)->with('productos',$productos)->with('user',$user);
     }
 
     /**
