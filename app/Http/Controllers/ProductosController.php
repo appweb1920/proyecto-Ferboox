@@ -80,8 +80,11 @@ class ProductosController extends Controller
         $producto = new Producto;
         $producto->nombre=$request->nombre;
         $producto->descripcion=$request->descripcion;
-        $producto->cantidad=$request->cantidad;
+
         $producto->categoria_id=$request->tipoCategoria;
+
+        $producto->cantidad=$request->cantidad;
+       
         $producto->precio=$request->precio;
 
         $archivo=$request->file('foto');

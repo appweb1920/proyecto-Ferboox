@@ -11,6 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/base.css">
     <link rel="stylesheet" href="base2.css">
+    <style>
+        .imageC{
+            height: 12em;
+            width: 100%;
+            margin-bottom: 3em;
+        }
+    </style>
 </head>
 <body>
         <!--Menu--->
@@ -80,10 +87,12 @@
                                     <label for="{{$c->id}}">{{$c->tipoCategoria}}</label>
                                 </li>
                                 @endforeach
+                                @if(!is_null($user)) && $user->tipo == 2))
                                 <li>
                                     <input type="checkbox" name="basura" value="1" class="form-group" onChange="this.form.submit()">
                                     <label for="basura">Borrados recientemente</label>
                                 </li>
+                                @endif
                             @endif
                                
                             </ul>
@@ -118,8 +127,8 @@
                             @foreach($productos as $p)
                             <div class="col mb-4">
                                 <div class="card">
-                                    <div id="image">
-                                        <img src="{{asset('/storage/imgStore/'.$p->foto)}}" class="img-fluid" alt="...">
+                                    <div class = "text-center">
+                                        <img src="{{asset('/storage/imgStore/'.$p->foto)}}" class="imageC " alt="...">
                                     </div>
                                     <!--<img src="imgs/kk.jpg" class="card-img-top" alt="">-->
                                     
