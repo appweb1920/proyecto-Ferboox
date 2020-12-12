@@ -20,6 +20,7 @@ class CreateProductos extends Migration
             $table->integer('cantidad');
             $table->float('precio',8,2);
             $table->string('foto');
+            $table->softDeletes();
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->timestamps();
@@ -33,6 +34,8 @@ class CreateProductos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('productos');
+        Schema::create('productos', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

@@ -80,7 +80,12 @@
                                     <label for="{{$c->id}}">{{$c->tipoCategoria}}</label>
                                 </li>
                                 @endforeach
+                                <li>
+                                    <input type="checkbox" name="basura" value="1" class="form-group" onChange="this.form.submit()">
+                                    <label for="basura">Borrados recientemente</label>
+                                </li>
                             @endif
+                               
                             </ul>
                         </form>
                     </div>
@@ -125,6 +130,7 @@
                                         @if(!is_null($user))
                                             @if($user->tipo == 2)
                                             <div class="zero text-center">
+                                                @if(is_null($p->deleted_at))
                                                 <button type="button" class="btn btn-primary btn-sm">
                                                 <a href="/editarProducto/{{$p->id}}">
                                                     <img class="img-fluid" src="icons/editar.png" height="20" width="20">
@@ -135,6 +141,13 @@
                                                         <img class="img-fluid" src="icons/borrar.png" height="20" width="20">
                                                     </a>
                                                 </button>
+                                                @else
+                                                <button type="button" class="btn btn-success btn-sm">
+                                                    <a href="/restaura/{{$p->id}}">
+                                                        <img class="img-fluid" src="icons/restaurar.png" height="20" width="20">
+                                                    </a>
+                                                </button>
+                                                @endif
                                             </div>
                                             @endif
                                         @endif

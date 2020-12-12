@@ -24,6 +24,7 @@ Route::post('/registroProducto',"ProductosController@store");
 Route::get('/editarProducto/{id}','ProductosController@show');
 Route::post('/editarProducto/guardaProducto','ProductosController@guardaCampos');
 Route::get('/borrarProducto/{id}','ProductosController@destroy');
+Route::get('/restaura/{id}','ProductosController@restaurar');
 Route::get('/enviaCorreo','ProductosController@enviaCorreo');
 Route::post('/agregarCategoria',"CategoriasController@store");
 Route::get('/pdf','ArchivosController@create');

@@ -24,10 +24,11 @@ class ProductosController extends Controller
         $user=Auth::user();
         $nombre = $request->nombre;
         $categoria = $request->id;
+        $basura = $request->basura;
 
         $categorias = Categoria::all();
         //$productos = DB::table('productos')->paginate(8);
-        $productos = Producto::orderBy('id','DESC')->nombre($nombre)->categoria($categoria)->paginate(8)->withQueryString();;
+        $productos = Producto::orderBy('id','DESC')->nombre($nombre)->categoria($categoria)->borrados($basura)->paginate(8)->withQueryString();;
 
         return view('catalogo')->with('productos',$productos)->with('categorias',$categorias)->with('nombre',$nombre)->with('user',$user);
     }
@@ -45,6 +46,12 @@ class ProductosController extends Controller
     public function create()
     {
         //
+    }
+
+    public function restaurar($id)
+    {
+        Producto::withTrashed()->find($id)->restore();
+        return redirect('/catalogo');
     }
 
     public function agregaProducto()
@@ -96,9 +103,10 @@ class ProductosController extends Controller
      */
     public function show($id)
     {
+        $user = Auth::user();
         $producto = Producto::find($id);
         $categorias = Categoria::all();
-        return view('editar')->with('producto',$producto)->with('categorias',$categorias);
+        return view('editar')->with('producto',$producto)->with('categorias',$categorias)->with('user',$user);
     }
 
     
@@ -114,12 +122,13 @@ class ProductosController extends Controller
         $producto->precio=$request->precio;
 
 
-        $archivo=$request->file('foto');
+        if(!is_null($archivo=$request->file('foto')))
+        {
+            $path=$request->file('foto')->storeAs(
+                'public/imgStore',$archivo->getClientOriginalName().".".$archivo->getClientOriginalExtension());
 
-        $path=$request->file('foto')->storeAs(
-            'public/imgStore',$archivo->getClientOriginalName().".".$archivo->getClientOriginalExtension());
-
-        $producto->foto = $archivo->getClientOriginalName().".".$archivo->getClientOriginalExtension();
+            $producto->foto = $archivo->getClientOriginalName().".".$archivo->getClientOriginalExtension();
+        }
 
         $producto->save();
     

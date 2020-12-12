@@ -127,7 +127,7 @@
                     <div class="form-group row">
                         <label for="precio" class="col-sm-2 col-form-label">Precio</label>
                         <div class="col-sm-10">
-                            <input name="precio" class="form-control" id="precio" placeholder="0.00" step="any" type="number" min="0.01">
+                            <input name="precio" class="form-control" id="precio" placeholder="0.00" step="any" type="number" min="0.01" value="0">
                         </div>
                     </div>
                     <div class="form-group row">
