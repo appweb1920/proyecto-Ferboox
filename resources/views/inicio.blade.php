@@ -101,27 +101,7 @@
             <h2 class="text-center">Haz tu Cotización</h2>
             <h5 class="pt-2">¿Por qué esperar a que te generen una Cotización? Tu la puedes hacer en tres sencillos pasos:</h5>
             <div class="row text-center" id="pasos">
-                <div class="col-sm-3 containerSteps">
-                    <img class="img-fluid pt-4" src="icons/usuario.png" height="100" width="100" alt="">
-                    <p class="pt-3">¡Resgitrate o Ingresa a tu cuenta!</p>
-                    <div class="pt-2">
-                        <p class="dot pt-2 text-white">1</p>
-                    </div>
-                </div>
-                <div class="col-sm-3 containerSteps">
-                    <img class="img-fluid  pt-4" src="icons/click.png" height="100" width="100" alt="">
-                    <p class="pt-3">Da click en la opción "Cotización"</p>
-                    <div class="pt-2">
-                        <p class="dot pt-2 text-white">2</p>
-                    </div>
-                </div>
-                <div class="col-sm-3 containerSteps">
-                    <img  class="img-fluid pt-4" src="icons/cotizacion.png" height="100" width="100" alt="">
-                    <p class="pt-3">¡Comienza tu cotizacion!</p>
-                    <div class="pt-2">
-                        <p class="dot pt-2 text-white">3</p>
-                    </div>
-                </div>
+                
             </div>
         </div>
 

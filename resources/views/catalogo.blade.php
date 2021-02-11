@@ -87,7 +87,7 @@
                                     <label for="{{$c->id}}">{{$c->tipoCategoria}}</label>
                                 </li>
                                 @endforeach
-                                @if(!is_null($user)) && $user->tipo == 2))
+                                @if(!is_null($user) && $user->tipo == 2)
                                 <li>
                                     <input type="checkbox" name="basura" value="1" class="form-group" onChange="this.form.submit()">
                                     <label for="basura">Borrados recientemente</label>
